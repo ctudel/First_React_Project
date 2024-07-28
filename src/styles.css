@@ -56,19 +56,29 @@ body {
   padding: 0;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
 .square {
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 24px;
+  font-size: clamp(1rem, 1rem + 2vw, 3rem);
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 10vw;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 10vw;
 }
 
 .board-row:after {
@@ -78,6 +88,7 @@ body {
 }
 
 .status {
+  font-size: 2rem;
   margin-bottom: 10px;
 }
 .game {

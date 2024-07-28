@@ -20,7 +20,7 @@ export default function Board() {
   function handleClick(i) {
 
     // Return early if a value exists
-    if (squares[i] || calculateWinner(squares)) {
+    if (squares[i] || calculateWinner(squares) || checkForDraw(squares)) {
       return;
     }
 
@@ -43,13 +43,19 @@ export default function Board() {
   }
 
   const winner = calculateWinner(squares);
+  const draw = checkForDraw(squares);
   let status;
 
   if (winner) {
     status = "Winner: " + winner;
 
+
+  } else if (draw) {
+    status = "Draw!";
+
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
+
   }
 
   // Create Components and pass the value in array above
@@ -99,5 +105,13 @@ export default function Board() {
 
     // null if there is no winner
     return null;
+  }
+
+  function checkForDraw(squares) {
+	if (squares.every(square => square !== null)) {
+		return true;	
+	}
+
+	return null;	
   }
 }
